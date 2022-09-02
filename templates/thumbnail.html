@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block title %} Make thumbnail {% endblock %} {% block
+body %} {{super()}}
+<h2 class="text-center">Upload a photo to make a thumbnail</h2>
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" id="flash-box" role="alert">
+  <button type="button" id="flash" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>{{message}}</strong>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form class="m-4 shadow-lg p-4 w-75 mx-lg-auto" action="/thumbnail" enctype="multipart/form-data" method="post">
+    {{form.csrf_token }} <br />
+    {{ form.file.label }} <br />
+    {{ form.file(class="form-control",accept="image/*")}} <br />
+    
+
+    <div>
+        {% for er in form.file.errors %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">{{er}}</span>
+            </button>
+            <!-- <strong>Holy guacamole!</strong> You should check in on some of those fields
+    below. -->
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        <label for="width"> Width</label>
+        <input type="number" name="width" id="width" min="20" max="350" class="form-control"
+            placeholder="size must be between 20 and 350" required>
+    </div>
+    <div>
+        <label for="height"> height</label>
+        <input type="number" name="height" id="height" min="20" max="350" class="form-control"
+            placeholder="size must be between 20 and 350" required>
+    </div>
+
+    <input class="btn btn-dark d-block w-100" type="submit" value="make thumbnail" />
+</form>
+
+{% endblock %}

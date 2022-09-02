@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block title %} App resize {% endblock %} {% block
+body %} {{super()}}
+<h2
+  id="f"
+  style="font-size: 20px"
+  class="text-center container p-3 shadow-lg rounded text-primary mt-5"
+>
+  Select any image type “.jpeg”,".jpg" “.png”, “.bmp”, “.gif”, “.ppm”, “.tiff”
+  to resize
+</h2>
+
+{% with messages=get_flashed_messages() %} {% if messages %} {% for message in
+messages %}
+<div
+  class="alert alert-warning alert-dismissible fade show"
+  id="flash-box"
+  role="alert"
+>
+  <button
+    type="button"
+    id="flash"
+    class="close"
+    data-dismiss="alert"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>{{message}}</strong>
+</div>
+{% endfor %} {% endif %} {% endwith %}
+
+<form
+  class="m-4 shadow-lg p-4 w-75 mx-lg-auto"
+  action="/home"
+  enctype="multipart/form-data"
+  method="post"
+>
+  {{form.csrf_token }} <br />
+  <p class="lead text-danger">Step 1</p>
+  {{ form.file.label }} <br />
+  {{ form.file(class="form-control",accept="image/*")}} <br />
+
+  <div>
+    {% for er in form.file.errors %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">{{er}}</span>
+      </button>
+      <!-- <strong>Holy guacamole!</strong> You should check in on some of those fields
+    below. -->
+    </div>
+    {% endfor %}
+  </div>
+  <br />
+  <p class="lead text-danger">Step 2 enter width</p>
+  <div>
+    <label for="width"> Width</label>
+    <input
+      type="number"
+      name="width"
+      id="width"
+      min="70"
+      max="1980"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <p class="lead text-danger">Step 3 enter height</p>
+  <div>
+    <label for="">Height</label>
+    <input
+      type="number"
+      name="height"
+      id="height"
+      min="70"
+      max="1980"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <input class="btn btn-dark d-block w-100 mt-2" type="submit" value="resize" />
+</form>
+
+{% endblock %}

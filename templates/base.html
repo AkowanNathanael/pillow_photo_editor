@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static',filename='logo/xfotos_logo.png')}}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/bootstrap.min.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/app.css')}}"
+    />
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block head %} {% endblock %}
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+      <div class="container-fluid">
+        <a
+          style="width: 300px; border-radius: 20px"
+          class="navbar-brand d-inline-block"
+          href="#"
+        >
+          <center>
+            <img
+              style="width: 100px; height: 100px"
+              src="{{url_for('static',filename='logo/xfotos_logo.png')}}"
+              alt=""
+            />
+          </center>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExample01"
+          aria-controls="navbarsExample01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample01">
+          <ul class="navbar-nav me-auto mb-2">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home"
+                >Resize Image</a
+              >
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/password_generator"
+                >Password Generator</a
+              >
+            </li> -->
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="/about"
+                tabindex="-1"
+                aria-disabled="true"
+                >About</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="dropdown01"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Image Premium</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                <li>
+                  <a class="dropdown-item" href="/convert_to_bw"
+                    >Convert to black and white</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/thumbnail"
+                    >Convert to Thumbnail</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/xconvert">
+                    Extension convert</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    {% block body %} {% endblock %}
+
+    <div class="fluid-container p-5 bg-dark footer">
+      <div class="divider"></div>
+      <p class="lead text-center text-light">
+        Copyright &copy 2021 All rights reserved
+      </p>
+      <p class="lead text-center text-light">
+        Do simple image conversion with Xfotos serviecs
+      </p>
+      <p class="lead text-center text-light">
+        This api is brought to you By
+        <i><span style="color: crimson">Nathanael Akowan</span></i> aka (Kim
+        Nathan)
+      </p>
+    </div>
+    <!--  -->
+    <!-- <script src="{{url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script> -->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/app.js')}}"></script>
+  </body>
+</html>

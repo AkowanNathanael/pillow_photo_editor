@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}Black and white {% endblock %} {% block
+body %} {{super()}}
+<h2 class="text-center"> Convert Image To Black and White </h2>
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" id="flash-box" role="alert">
+  <button type="button" id="flash" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>{{message}}</strong>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form class="m-4 shadow-lg p-4 w-75 mx-lg-auto" action="/convert_to_bw" enctype="multipart/form-data" method="post">
+    {{form.csrf_token }} <br />
+    {{ form.file.label }} <br />
+    {{ form.file(class="form-control",accept="image/*")}} <br />
+
+    <div>
+        {% for er in form.file.errors %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">{{er}}</span>
+            </button>
+            <!-- <strong>Holy guacamole!</strong> You should check in on some of those fields
+    below. -->
+        </div>
+        {% endfor %}
+    </div>
+    <br />
+    <input class="btn btn-dark d-block w-100" type="submit" value="Convert to black and white" />
+</form>
+
+{% endblock %}
