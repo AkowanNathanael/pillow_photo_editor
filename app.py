@@ -30,6 +30,7 @@ def index():
         size=(file_width,file_height)
         filename=secure_filename(im.filename)
         image=Image.open(im)
+        
         image=image.resize(size,Image.BICUBIC)
         image.save("static"+ "\\uploads\\"+filename)
         flash("Image successfully processed, check your download folder for image")
