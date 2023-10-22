@@ -35,7 +35,7 @@ def index():
         image.save("static"+ "\\uploads\\"+filename)
         flash("Image successfully processed, check your download folder for image")
         # return send_file(BytesIO(im.read()),mimetype="Image",as_attachment=True,download_name="hio.PNG")
-        return send_file("static"+"\\uploads\\" +filename,mimetype="image",attachment_filename=filename,as_attachment=True);os.remove("static/"+"uploads"+filename)
+        return send_file("static"+"\\uploads\\" +filename,mimetype="image",download_name=filename ,as_attachment=True);os.remove("static/"+"uploads"+filename)
         
         
     return render_template("home.html",form=form)
@@ -82,7 +82,7 @@ def convert():
         image.save("static"+ "\\uploads\\"+filename)
         flash("Image successfully processed, check your download folder for image")
         # return send_file(BytesIO(im.read()),mimetype="Image",as_attachment=True,download_name="hio.PNG")
-        return send_file("static"+"\\uploads\\" +filename,mimetype="image",attachment_filename=filename,as_attachment=True);os.remove("static/"+"uploads"+filename)
+        return send_file("static"+"\\uploads\\" +filename,mimetype="image",download_name=filename,as_attachment=True);os.remove("static/"+"uploads"+filename)
     return render_template("convert.html",form=form)
 
 
@@ -104,7 +104,7 @@ def thumbnail():
         image.save("static"+ "\\uploads\\"+filename)
         flash("Image successfully processed, check your download folder for image")
         # return send_file(BytesIO(im.read()),mimetype="Image",as_attachment=True,download_name="hio.PNG")
-        return send_file("static"+"\\uploads\\" +filename,mimetype="image",attachment_filename=filename,as_attachment=True);os.remove("static/"+"uploads"+filename)
+        return send_file("static"+"\\uploads\\" +filename,mimetype="image",download_name=filename,as_attachment=True);os.remove("static/"+"uploads"+filename)
     return render_template("thumbnail.html",form=form)
 
 
@@ -130,7 +130,7 @@ def xconvert():
         image.save("static"+ "\\uploads\\"+filename+file_extension)
         flash("Image successfully processed, check your download folder for image")
         # return send_file(BytesIO(im.read()),mimetype="Image",as_attachment=True,download_name="hio.PNG")
-        return send_file("static"+"\\uploads\\" +filename+file_extension,mimetype="image",attachment_filename=filename+file_extension,as_attachment=True);os.remove("static/"+"uploads"+filename)
+        return send_file("static"+"\\uploads\\" +filename+file_extension,mimetype="image",download_name=filename+file_extension,as_attachment=True);os.remove("static/"+"uploads"+filename)
     return render_template("xconvert.html",form=form)
 
 
