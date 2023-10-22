@@ -10,3 +10,6 @@ class Fileform(FlaskForm):
     height=IntegerField("height",validators=[InputRequired("Enter a number"),Length(max=1980,min=60,message="file height must be between 50 and 1980")])
     recapture=RecaptchaField()
     submit=SubmitField("resize")
+
+
+    # 
